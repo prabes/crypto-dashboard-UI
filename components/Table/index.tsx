@@ -24,8 +24,11 @@ interface IColumns {
 interface TableProps {
 	columns: IColumns[]
 	data: ITableData[]
-	onChangePage: Function
+	onChangePage: () => {}
 	paginationTotalRows: number
+	paginationServer: boolean
+	pagination: boolean
+	onChangeRowsPerPage: () => {}
 }
 
 

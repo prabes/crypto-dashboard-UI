@@ -20,7 +20,7 @@ a {
   font-size: 12px;
 }
 
-.text-sm{
+.text-sm {
   font-size: 14px;
 }
 
@@ -41,5 +41,52 @@ a {
 }
 
 .progress-bar {
-  background-color: rgb(207, 214, 228);
+  background-color: rgb(88, 102, 126)
+}
+
+.table-row {
+  display: flex;
+  height: 60px;
+  align-items: center;
+}
+
+[data-column-id="sn"].rdt_TableCol {
+  font-weight: 600;
+  color: rgb(23, 25, 36);
+  margin-left: 35px;
+}
+
+[data-column-id="name"].rdt_TableCol {
+  font-weight: 600;
+  color: rgb(23, 25, 36);
+}
+
+[data-column-id="price"].rdt_TableCol {
+  font-weight: 600;
+  color: rgb(23, 25, 36);
+}
+
+[data-column-id="24_per"].rdt_TableCol {
+  font-weight: 600;
+  color: rgb(23, 25, 36);
+}
+
+[data-column-id="7d_per"].rdt_TableCol {
+  font-weight: 600;
+  color: rgb(23, 25, 36);
+}
+
+[data-column-id="market_cap"].rdt_TableCol {
+  font-weight: 600;
+  color: rgb(23, 25, 36);
+}
+
+[data-column-id="volume_24"].rdt_TableCol {
+  font-weight: 600;
+  color: rgb(23, 25, 36);
+}
+
+[data-column-id="circulating_supply"].rdt_TableCol {
+  font-weight: 600;
+  color: rgb(23, 25, 36);
 }

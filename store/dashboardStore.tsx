@@ -1,6 +1,14 @@
 import axios from "axios";
 import { makeAutoObservable, observable, runInAction } from 'mobx';
 
+
+interface IParams {
+	pageNumber: number
+	searchQuery: string
+	isAscending: string
+	perPage: number
+}
+
 class DashboardStore {
 	cryptoList = [];
 	status = "initial";
@@ -19,7 +27,7 @@ class DashboardStore {
 		});
 	}
 
-	fetchApiCryptoList = async (urlParams) => {
+	fetchApiCryptoList = async (urlParams: IParams) => {
 		try {
 			const apiUrl = `http://localhost:8080/api/crypto_details`
 			let cryptoListFromApi = await axios.get(apiUrl, { params: urlParams });
@@ -33,7 +41,7 @@ class DashboardStore {
 		}
 	}
 
-	getCryptoList = async (urlParams = {}) => {
+	getCryptoList = async (urlParams:IParams) => {
 		try {
 			const params = {
 				pageNumber: urlParams?.pageNumber || this.pageNumber,

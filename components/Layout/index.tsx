@@ -1,13 +1,12 @@
 import * as React from 'react'
-import Link from 'next/link'
 import Head from 'next/head'
 
-interface Props {
+interface ILayoutProps {
   title?: string
   children?: JSX.Element
 }
 
-const Layout: React.FunctionComponent<Props> = ({
+const Layout: React.FunctionComponent<ILayoutProps> = ({
   children,
   title = 'This is the default title',
 }) => (
