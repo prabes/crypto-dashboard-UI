@@ -5,6 +5,7 @@ import { ProgressBar } from 'react-bootstrap';
 
 import Layout from '../components/Layout'
 import Table from '../components/Table'
+import SearchBox from 'components/Searchbox';
 import dashboardStore from '../store/dashboardStore'
 
 const Dashboard = (props) => {
@@ -16,6 +17,8 @@ const Dashboard = (props) => {
     const pageNumber = dashboardStore.pageNumber
     const searchQuery = dashboardStore.searchQuery
     const perPage = dashboardStore.perPage
+    const sortColumn = 'name'
+    const order = 'DES'
     const urlParams = { pageNumber, perPage, searchQuery }
     dashboardStore.getCryptoList(urlParams)
   }
@@ -125,12 +128,19 @@ const Dashboard = (props) => {
   return (
     <>
       <Layout title="Crypto Dashboard">
-        <Table columns={tableColumn} data={getTableData(dashboardStore)} pagination
-          paginationServer
-          paginationTotalRows={cryptoList.total}
-          onChangePage={handlePageChange}
-          onChangeRowsPerPage={handlePerPageChange}
-        />
+        <>
+          <div className='d-flex justify-content-end '>
+            <div className='d-flex justify-content-end w-25'>
+              <SearchBox />
+            </div>
+          </div>
+          <Table columns={tableColumn} data={getTableData(dashboardStore)} pagination
+            paginationServer
+            paginationTotalRows={cryptoList.total}
+            onChangePage={handlePageChange}
+            onChangeRowsPerPage={handlePerPageChange}
+          />
+        </>
       </Layout>
     </>
   )
