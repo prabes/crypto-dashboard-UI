@@ -7,6 +7,7 @@ interface IParams {
 	searchQuery: string
 	isAscending: string
 	perPage: number
+	name: string
 }
 
 class DashboardStore {
@@ -29,7 +30,8 @@ class DashboardStore {
 
 	fetchApiCryptoList = async (urlParams: IParams) => {
 		try {
-			const apiUrl = `http://localhost:8080/api/crypto_details`
+			const apiUrl = process.env.API_BASE_URL + `/api/crypto_details`
+			console.log(apiUrl)
 			let cryptoListFromApi = await axios.get(apiUrl, { params: urlParams });
 			let { data } = cryptoListFromApi;
 			runInAction(() => {
@@ -46,7 +48,8 @@ class DashboardStore {
 			const params = {
 				pageNumber: urlParams?.pageNumber || this.pageNumber,
 				searchQuery: urlParams?.searchQuery || this.searchQuery,
-				isAscending: urlParams?.isAscending || this.isAscending,
+				order: urlParams?.isAscending || this.isAscending,
+				sortColumn: urlParams?.name,
 				perPage: urlParams?.perPage || this.perPage
 			}
 			const data = await this.fetchApiCryptoList(params)
