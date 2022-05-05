@@ -1,0 +1,32 @@
+.bg_redd {
+    padding: 0px 14px;
+    white-space: nowrap !important;
+    color:  rgb(88, 102, 126) !important;
+    margin-right: 4px !important;
+
+    background: transparent;
+    border: 0px;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+
+    cursor: pointer;
+    -webkit-box-pack: center;
+    justify-content: center;
+    outline: 0px;
+    font-weight: 600;
+    width: auto;
+    height: 32px;
+    font-size: 12px;
+    padding: 0px 16px;
+    line-height: 18px;
+}
+
+.bg_redd:hover {
+    background: rgb(248,250,253)
+}
+
+.selected {
+    color: rgb(56, 97, 251);
+    background: rgb(240,246,255)
+}

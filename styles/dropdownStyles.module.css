@@ -1,0 +1,22 @@
+.ddStyles {
+    padding: 0px 14px;
+    color: rgb(239, 242, 245);
+    margin-right: 4px !important;
+    background: rgb(239, 242, 245);;
+    border: 0px;
+    border-radius: 8px;
+    height: 32px;
+    width: auto;
+    font-weight: 600;
+    line-height: 18px;
+    font-family: 'Inter, sans-serif';
+
+    background: red;
+    width: fit-content;
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.dropdown:hover{
+    background: rgb(248,250,253)
+}
