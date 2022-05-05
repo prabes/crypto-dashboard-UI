@@ -2,12 +2,12 @@ import axios from "axios";
 import { makeAutoObservable, observable, runInAction } from 'mobx';
 
 class DashboardStore {
-
 	cryptoList = [];
 	status = "initial";
 	searchQuery = "";
 	pageNumber = 1;
-	isAscending = true;
+	isAscending = 'ASC';
+	perPage = 10;
 
 	constructor() {
 		makeAutoObservable(this, {
@@ -21,27 +21,26 @@ class DashboardStore {
 
 	fetchApiCryptoList = async (urlParams) => {
 		try {
-			const apiUrl = "http://localhost:8080/api/crypto_details"
+			const apiUrl = `http://localhost:8080/api/crypto_details`
 			let cryptoListFromApi = await axios.get(apiUrl, { params: urlParams });
-			let data = cryptoListFromApi.data;
+			let { data } = cryptoListFromApi;
 			runInAction(() => {
-				this.cryptoList = data.details;
+				this.cryptoList = data;
 				this.status = 'success'
 			});
-			debugger
 		} catch (error) {
 			console.log("Error:::", error)
 		}
 	}
 
-	getCryptoList = async () => {
+	getCryptoList = async (urlParams = {}) => {
 		try {
 			const params = {
-				pageNumber: this.pageNumber,
-				searchQuery: this.searchQuery,
-				isAscending: this.isAscending,
+				pageNumber: urlParams?.pageNumber || this.pageNumber,
+				searchQuery: urlParams?.searchQuery || this.searchQuery,
+				isAscending: urlParams?.isAscending || this.isAscending,
+				perPage: urlParams?.perPage || this.perPage
 			}
-			// const urlParams = new URLSearchParams(params);
 			const data = await this.fetchApiCryptoList(params)
 		} catch (e) {
 			runInAction(() => {

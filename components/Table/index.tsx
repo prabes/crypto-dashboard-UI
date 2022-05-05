@@ -1,21 +1,45 @@
-import React from 'react'
-import { ProgressBar } from 'react-bootstrap';
+import React, { ReactNode } from 'react'
+import { Pagination, ProgressBar } from 'react-bootstrap';
 import DataTable from 'react-data-table-component'
-// import { tableColumn } from './tableConfig'
 
+interface ITableData {
+	id: number
+	name: string
+	price: number
+	percentage_24: number
+	percentage_7d: number
+	market_cap: number
+	volume_24h: number
+	circulating_supply: number
+}
 
-interface Props {
-	columns: Array;
-	data: Array
+interface IColumns {
+	name: string
+	sortable: boolean
+	cell: Element
+	maxWidth: string
+	minWidth: string
+}
+
+interface TableProps {
+	columns: IColumns[]
+	data: ITableData[]
+	onChangePage: Function
+	paginationTotalRows: number
 }
 
 
-const Table: React.FunctionComponent<Props> = ({ columns, data }) => {
-	debugger
+const Table: React.FunctionComponent<TableProps> = ({ columns, data, onChangePage, paginationTotalRows, paginationServer, pagination, onChangeRowsPerPage }) => {
 	return (
-	<div className='text-uppercase'>
-		<DataTable title="Crypto Dashboard" columns={columns} data={data} pagination />
-	</div>
-)}
+		<div className='text-uppercase'>
+			<DataTable title="Crypto Dashboard" columns={columns} data={data} pagination={pagination}
+				paginationTotalRows={paginationTotalRows}
+				onChangePage={onChangePage}
+				paginationServer={paginationServer}
+				onChangeRowsPerPage={onChangeRowsPerPage}
+			/>
+		</div>
+	)
+}
 
 export default Table
